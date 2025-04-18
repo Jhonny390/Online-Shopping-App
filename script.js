@@ -56,16 +56,8 @@ function sortByPrice(){
   }
  
  
-
 function renderProductDerails(){
 products.forEach(function(product){
-
-// const productRow = `<div class="product-row">
-//                             <p>${product.name} - Rs. ${product.price}</p>
-//                             <button>Add to cart</button>
-//                             </div>`
-//             productsContainer.insertAdjacentHTML("beforeend",productRow)
-
    
 const {id,name,price}=product
  const divElement= document.createElement('div')
@@ -96,14 +88,7 @@ const producttoadd=products.find(function(product){
     console.log(cart)
     renderCartDetails()
 
-    // const{id:productId,name,price} =producttoadd
-    // const cartItemRow = `
-    //     <div class="product-row">
-    //     <p>${name} - Rs. ${price}</p>
-    //     <button onclick ="removeFromcart(${id})">Remove</button>
-    //     </div> `
-    // cartcontainer.insertAdjacentHTML("beforeend",cartItemRow)
-    // feedbackElement.textContent=`${name} is added to the cart`
+  
     upadateUserFeedback(`${producttoadd.name} is added to the cart`,"sucess")
 }
 
@@ -120,11 +105,9 @@ function renderCartDetails(){
     cartcontainer.insertAdjacentHTML("beforeend",cartItemRow)
     })
 
-    // let totalprice=0
+  
      console.log("cart",cart)
-    // for(let i=0;i<cart.length;i++){
-    //     totalprice = totalprice +cart[i].price
-    // }
+   
     const totalprice=cart.reduce(function(acc,curproduct){
         return acc+curproduct.price
     },0)
@@ -139,8 +122,6 @@ function renderCartDetails(){
 
     const productIndex= cart.findIndex((product)=>product.id===id)
      cart.splice(productIndex,1)
-    // console.log(upadatedcart)
-    // cart=upadatedcart
    
     upadateUserFeedback(`${product.name} is removed from the cart`,"error")
     renderCartDetails()
